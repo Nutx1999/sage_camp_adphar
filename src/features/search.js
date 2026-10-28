@@ -6,5 +6,16 @@
 // store  = ตัวเก็บข้อมูล: list() · get(id) · create({title, body}) · update(id, patch) · remove(id)
 
 export function register(router, { store }) {
-  // TODO(feature/search): เพิ่ม route ของฟีเจอร์ที่นี่
+  router.get('/search', (req, res) => {
+    const q = String(req.query.q ?? '').trim().toLowerCase();
+    const items = store.list();
+    if (!q) return res.json(items);
+    // ใช้ includes เท่านั้น (ห้ามสร้าง RegExp จากคำค้น) ค้นทั้งหัวข้อและรายละเอียด
+    const found = items.filter(
+      (item) =>
+        String(item.title ?? '').toLowerCase().includes(q) ||
+        String(item.body ?? '').toLowerCase().includes(q),
+    );
+    res.json(found);
+  });
 }
