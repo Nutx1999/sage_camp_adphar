@@ -1,4 +1,4 @@
-ame: CI-BiiMTest
+name: CI-BiiMTest
 
 on:
   pull_request:
