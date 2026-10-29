@@ -1,4 +1,4 @@
-name: CI
+name: CI Nattawut
 
 on:
   pull_request:
