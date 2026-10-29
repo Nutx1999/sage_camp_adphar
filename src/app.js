@@ -1,5 +1,5 @@
 import express from 'express';
-mport { fileURLToPath } from 'node:url';
+import { fileURLToPath } from 'node:url';
 import { FEATURES } from './features/index.js';
 import { validateAnnouncement } from './validation.js';
 
